@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|c:\\users\\tali\\onedrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\rewearapi\\rewearapi\\bl\\clothingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|solutionrelative:rewearapi\\bl\\clothingitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|c:\\users\\tali\\onedrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\rewearapi\\rewearapi\\bl\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|solutionrelative:rewearapi\\bl\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|c:\\users\\tali\\onedrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\rewearapi\\rewearapi\\bl\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|solutionrelative:rewearapi\\bl\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|c:\\users\\tali\\onedrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\rewearapi\\rewearapi\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|solutionrelative:rewearapi\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|c:\\users\\tali\\onedrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\rewearapi\\rewearapi\\dal\\dbservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|solutionrelative:rewearapi\\dal\\dbservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|c:\\users\\tali\\onedrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\rewearapi\\rewearapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{12F9D3C0-A13E-4371-B800-F11BA6E45C26}|RewearApi\\RewearApi.csproj|solutionrelative:rewearapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\Order.cs",
+              "RelativeDocumentMoniker": "RewearApi\\BL\\Order.cs",
+              "ToolTip": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\Order.cs",
+              "RelativeToolTip": "RewearApi\\BL\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T16:32:23.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Store.cs",
+              "DocumentMoniker": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\Store.cs",
+              "RelativeDocumentMoniker": "RewearApi\\BL\\Store.cs",
+              "ToolTip": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\Store.cs",
+              "RelativeToolTip": "RewearApi\\BL\\Store.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAcwAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T16:20:18.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClothingItem.cs",
+              "DocumentMoniker": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\ClothingItem.cs",
+              "RelativeDocumentMoniker": "RewearApi\\BL\\ClothingItem.cs",
+              "ToolTip": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\ClothingItem.cs",
+              "RelativeToolTip": "RewearApi\\BL\\ClothingItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T16:13:25.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\User.cs",
+              "RelativeDocumentMoniker": "RewearApi\\BL\\User.cs",
+              "ToolTip": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\BL\\User.cs",
+              "RelativeToolTip": "RewearApi\\BL\\User.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAcwEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T16:05:08.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\appsettings.json",
+              "RelativeDocumentMoniker": "RewearApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\appsettings.json",
+              "RelativeToolTip": "RewearApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-02T15:57:18.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DBServices.cs",
+              "DocumentMoniker": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\DAL\\DBServices.cs",
+              "RelativeDocumentMoniker": "RewearApi\\DAL\\DBServices.cs",
+              "ToolTip": "C:\\Users\\Tali\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\RewearApi\\RewearApi\\DAL\\DBServices.cs",
+              "RelativeToolTip": "RewearApi\\DAL\\DBServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T15:46:18.996Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
