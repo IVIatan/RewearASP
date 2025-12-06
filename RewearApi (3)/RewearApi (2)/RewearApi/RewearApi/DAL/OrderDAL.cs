@@ -16,7 +16,7 @@ namespace RewearApi.DAL
         private const string SP_ADD = "AddOrder";
         private const string SP_UPDATE = "UpdateOrder";
 
-        public List<Order> GetAll()
+        public List<Order> GetAllOrders()
         {
             List<Order> orders = new List<Order>();
 
@@ -43,7 +43,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public Order? GetById(int orderId)
+        public Order? GetOrderById(int orderId)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public List<Order> GetByBuyer(int buyerUserId)
+        public List<Order> GetOrdersByBuyerUserId(int buyerUserId)
         {
             List<Order> orders = new List<Order>();
 
@@ -92,7 +92,7 @@ namespace RewearApi.DAL
                     {
                         while (reader.Read())
                         {
-                            orders.Add(MapSimpleOrder(reader));
+                            orders.Add(MapOrder(reader));
                         }
                     }
                 }
@@ -105,7 +105,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public List<Order> GetBySeller(int sellerUserId)
+        public List<Order> GetOrdersBySellerUserId(int sellerUserId)
         {
             List<Order> orders = new List<Order>();
 
@@ -124,7 +124,7 @@ namespace RewearApi.DAL
                     {
                         while (reader.Read())
                         {
-                            orders.Add(MapSimpleOrder(reader));
+                            orders.Add(MapOrder(reader));
                         }
                     }
                 }
@@ -137,7 +137,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public int Add(Order order)
+        public int AddOrder(Order order)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public int Update(Order order)
+        public int UpdateOrder(Order order)
         {
             try
             {
@@ -200,49 +200,16 @@ namespace RewearApi.DAL
 
             o.OrderId = Convert.ToInt32(reader["OrderId"]);
             o.ItemId = Convert.ToInt32(reader["ItemId"]);
+            o.ItemTitle = reader["ItemTitle"].ToString();
             o.BuyerUserId = Convert.ToInt32(reader["BuyerUserId"]);
+            o.BuyerFullName = reader["BuyerFullName"].ToString();
             o.SellerUserId = Convert.ToInt32(reader["SellerUserId"]);
-            o.OrderDate = Convert.ToDateTime(reader["OrderDate"]);
-            o.TotalAmount = Convert.ToDecimal(reader["TotalAmount"]);
-            o.Status = reader["Status"].ToString()!;
-
-            if (ColumnExists(reader, "ItemTitle") && reader["ItemTitle"] != DBNull.Value)
-                o.ItemTitle = reader["ItemTitle"].ToString();
-
-            if (ColumnExists(reader, "BuyerFullName") && reader["BuyerFullName"] != DBNull.Value)
-                o.BuyerFullName = reader["BuyerFullName"].ToString();
-
-            if (ColumnExists(reader, "SellerFullName") && reader["SellerFullName"] != DBNull.Value)
-                o.SellerFullName = reader["SellerFullName"].ToString();
-
-            return o;
-        }
-
-        private Order MapSimpleOrder(SqlDataReader reader)
-        {
-            Order o = new Order();
-
-            o.OrderId = Convert.ToInt32(reader["OrderId"]);
-            o.ItemId = Convert.ToInt32(reader["ItemId"]);
-            o.BuyerUserId = Convert.ToInt32(reader["BuyerUserId"]);
-            o.SellerUserId = Convert.ToInt32(reader["SellerUserId"]);
+            o.SellerFullName = reader["SellerFullName"].ToString();
             o.OrderDate = Convert.ToDateTime(reader["OrderDate"]);
             o.TotalAmount = Convert.ToDecimal(reader["TotalAmount"]);
             o.Status = reader["Status"].ToString()!;
 
             return o;
-        }
-
-        private bool ColumnExists(SqlDataReader reader, string columnName)
-        {
-            try
-            {
-                return reader.GetOrdinal(columnName) >= 0;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                return false;
-            }
         }
     }
 }

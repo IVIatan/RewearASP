@@ -11,6 +11,7 @@ namespace RewearApi.DAL
 
         private const string SP_GET_ALL = "GetAllStores";
         private const string SP_GET_BY_ID = "GetStoreById";
+        private const string SP_GET_BY_OWNER = "GetStoresByOwnerUserId";
         private const string SP_ADD = "AddStore";
         private const string SP_UPDATE = "UpdateStore";
 
@@ -64,6 +65,38 @@ namespace RewearApi.DAL
                 }
 
                 return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Store> GetStoresByOwnerUserId(int ownerUserId)
+        {
+            List<Store> stores = new List<Store>();
+
+            try
+            {
+                using (SqlConnection con = Connect(CON_STR_NAME))
+                {
+                    var paramDic = new Dictionary<string, object>
+                    {
+                        { "@OwnerUserId", ownerUserId }
+                    };
+
+                    SqlCommand cmd = CreateCommand(SP_GET_BY_OWNER, con, paramDic);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            stores.Add(MapStore(reader));
+                        }
+                    }
+                }
+
+                return stores;
             }
             catch (Exception ex)
             {
@@ -135,12 +168,8 @@ namespace RewearApi.DAL
             s.StoreName = reader["StoreName"].ToString()!;
             s.Purpose = reader["Purpose"].ToString()!;
             s.City = reader["City"].ToString()!;
+            s.CreatedAt = Convert.ToDateTime(reader["CreatedAt"]);
             s.IsActive = Convert.ToBoolean(reader["IsActive"]);
-
-            if (reader["CreatedAt"] != DBNull.Value)
-            {
-                s.CreatedAt = Convert.ToDateTime(reader["CreatedAt"]);
-            }
 
             return s;
         }

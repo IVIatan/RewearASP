@@ -2,6 +2,7 @@
 using RewearApi.BL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace RewearApi.DAL
 {
@@ -16,11 +17,10 @@ namespace RewearApi.DAL
         private const string SP_ADD = "AddClothingItem";
         private const string SP_UPDATE = "UpdateClothingItem";
         private const string SP_DELETE = "DeleteClothingItem";
-        private const string SP_UPDATE_IMAGE = "UpdateClothingItemImage";
 
-        public List<ClothingItem> GetAll()
+        public List<ClothingItem> GetAllClothingItems()
         {
-            var list = new List<ClothingItem>();
+            List<ClothingItem> items = new List<ClothingItem>();
 
             try
             {
@@ -32,12 +32,12 @@ namespace RewearApi.DAL
                     {
                         while (reader.Read())
                         {
-                            list.Add(MapClothingItem(reader));
+                            items.Add(MapClothingItem(reader));
                         }
                     }
                 }
 
-                return list;
+                return items;
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public ClothingItem? GetById(int id)
+        public ClothingItem? GetClothingItemById(int itemId)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace RewearApi.DAL
                 {
                     var paramDic = new Dictionary<string, object>
                     {
-                        { "@ItemId", id }
+                        { "@ItemId", itemId }
                     };
 
                     SqlCommand cmd = CreateCommand(SP_GET_BY_ID, con, paramDic);
@@ -75,9 +75,9 @@ namespace RewearApi.DAL
             }
         }
 
-        public List<ClothingItem> GetByOwner(int ownerUserId)
+        public List<ClothingItem> GetClothingItemsByOwnerUserId(int ownerUserId)
         {
-            var list = new List<ClothingItem>();
+            List<ClothingItem> items = new List<ClothingItem>();
 
             try
             {
@@ -94,12 +94,12 @@ namespace RewearApi.DAL
                     {
                         while (reader.Read())
                         {
-                            list.Add(MapClothingItem(reader));
+                            items.Add(MapClothingItem(reader));
                         }
                     }
                 }
 
-                return list;
+                return items;
             }
             catch (Exception ex)
             {
@@ -107,9 +107,9 @@ namespace RewearApi.DAL
             }
         }
 
-        public List<ClothingItem> GetByStore(int storeId)
+        public List<ClothingItem> GetClothingItemsByStoreId(int storeId)
         {
-            var list = new List<ClothingItem>();
+            List<ClothingItem> items = new List<ClothingItem>();
 
             try
             {
@@ -126,12 +126,12 @@ namespace RewearApi.DAL
                     {
                         while (reader.Read())
                         {
-                            list.Add(MapClothingItem(reader));
+                            items.Add(MapClothingItem(reader));
                         }
                     }
                 }
 
-                return list;
+                return items;
             }
             catch (Exception ex)
             {
@@ -139,7 +139,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public int Add(ClothingItem item)
+        public int AddClothingItem(ClothingItem item)
         {
             try
             {
@@ -158,8 +158,7 @@ namespace RewearApi.DAL
                         { "@Price",              (object?)item.Price ?? DBNull.Value },
                         { "@Status",             item.Status },
                         { "@ExpirationDate",     (object?)item.ExpirationDate ?? DBNull.Value },
-                        { "@DestinationStoreId", (object?)item.DestinationStoreId ?? DBNull.Value },
-                        { "@ImagePath",          (object?)item.ImagePath ?? DBNull.Value }
+                        { "@DestinationStoreId", (object?)item.DestinationStoreId ?? DBNull.Value }
                     };
 
                     SqlCommand cmd = CreateCommand(SP_ADD, con, paramDic);
@@ -175,7 +174,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public int Update(ClothingItem item)
+        public int UpdateClothingItem(ClothingItem item)
         {
             try
             {
@@ -183,20 +182,19 @@ namespace RewearApi.DAL
                 {
                     var paramDic = new Dictionary<string, object>
                     {
-                        { "@ItemId",             item.ItemId },
-                        { "@OwnerUserId",        item.OwnerUserId },
-                        { "@StoreId",            (object?)item.StoreId ?? DBNull.Value },
-                        { "@Title",              item.Title },
-                        { "@Description",        (object?)item.Description ?? DBNull.Value },
-                        { "@Category",           item.Category },
-                        { "@Size",               item.Size },
-                        { "@Condition",          item.Condition },
-                        { "@Color",              item.Color },
-                        { "@Price",              (object?)item.Price ?? DBNull.Value },
-                        { "@Status",             item.Status },
-                        { "@ExpirationDate",     (object?)item.ExpirationDate ?? DBNull.Value },
-                        { "@DestinationStoreId", (object?)item.DestinationStoreId ?? DBNull.Value },
-                        { "@ImagePath",          (object?)item.ImagePath ?? DBNull.Value }
+                        { "@ItemId",            item.ItemId },
+                        { "@OwnerUserId",       item.OwnerUserId },
+                        { "@StoreId",           (object?)item.StoreId ?? DBNull.Value },
+                        { "@Title",             item.Title },
+                        { "@Description",       (object?)item.Description ?? DBNull.Value },
+                        { "@Category",          item.Category },
+                        { "@Size",              item.Size },
+                        { "@Condition",         item.Condition },
+                        { "@Color",             item.Color },
+                        { "@Price",             (object?)item.Price ?? DBNull.Value },
+                        { "@Status",            item.Status },
+                        { "@ExpirationDate",    (object?)item.ExpirationDate ?? DBNull.Value },
+                        { "@DestinationStoreId", (object?)item.DestinationStoreId ?? DBNull.Value }
                     };
 
                     SqlCommand cmd = CreateCommand(SP_UPDATE, con, paramDic);
@@ -212,7 +210,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public int Delete(int itemId)
+        public int DeleteClothingItem(int itemId)
         {
             try
             {
@@ -242,17 +240,17 @@ namespace RewearApi.DAL
             {
                 using (SqlConnection con = Connect(CON_STR_NAME))
                 {
-                    var paramDic = new Dictionary<string, object>
+                    string sql = "UPDATE ClothingItems SET ImagePath = @ImagePath WHERE ItemId = @ItemId";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        { "@ItemId",    itemId },
-                        { "@ImagePath", imagePath }
-                    };
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+                        cmd.Parameters.AddWithValue("@ItemId", itemId);
 
-                    SqlCommand cmd = CreateCommand(SP_UPDATE_IMAGE, con, paramDic);
-
-                    object result = cmd.ExecuteScalar();
-                    int rows = Convert.ToInt32(result);
-                    return rows;
+                        int rows = cmd.ExecuteNonQuery();
+                        return rows;
+                    }
                 }
             }
             catch (Exception ex)
@@ -263,55 +261,48 @@ namespace RewearApi.DAL
 
         private ClothingItem MapClothingItem(SqlDataReader reader)
         {
-            var item = new ClothingItem();
+            ClothingItem c = new ClothingItem();
 
-            item.ItemId = Convert.ToInt32(reader["ItemId"]);
-            item.OwnerUserId = Convert.ToInt32(reader["OwnerUserId"]);
+            c.ItemId = Convert.ToInt32(reader["ItemId"]);
+            c.OwnerUserId = Convert.ToInt32(reader["OwnerUserId"]);
+            c.OwnerFullName = reader["OwnerFullName"].ToString();
 
-            if (reader["StoreId"] != DBNull.Value)
-                item.StoreId = Convert.ToInt32(reader["StoreId"]);
-
-            if (reader["DestinationStoreId"] != DBNull.Value)
-                item.DestinationStoreId = Convert.ToInt32(reader["DestinationStoreId"]);
-
-            item.Title = reader["Title"].ToString()!;
-            item.Description = reader["Description"] == DBNull.Value ? null : reader["Description"].ToString();
-            item.Category = reader["Category"].ToString()!;
-            item.Size = reader["Size"].ToString()!;
-            item.Condition = reader["Condition"].ToString()!;
-            item.Color = reader["color"].ToString()!;
-
-            item.Price = reader["Price"] == DBNull.Value
-                ? (decimal?)null
-                : Convert.ToDecimal(reader["Price"]);
-
-            item.Status = reader["Status"].ToString()!;
-
-            item.ExpirationDate = reader["ExpirationDate"] == DBNull.Value
-                ? (DateTime?)null
-                : Convert.ToDateTime(reader["ExpirationDate"]);
-
-            item.CreatedAt = reader["CreatedAt"] == DBNull.Value
-                ? DateTime.MinValue
-                : Convert.ToDateTime(reader["CreatedAt"]);
-
-            item.OwnerFullName = reader["OwnerFullName"] == DBNull.Value
+            c.StoreId = reader["StoreId"] == DBNull.Value
                 ? null
-                : reader["OwnerFullName"].ToString();
+                : Convert.ToInt32(reader["StoreId"]);
 
-            item.StoreName = reader["StoreName"] == DBNull.Value
+            c.StoreName = reader["StoreName"] == DBNull.Value
                 ? null
                 : reader["StoreName"].ToString();
 
-            item.DestinationStoreName = reader["DestinationStoreName"] == DBNull.Value
+            c.Title = reader["Title"].ToString()!;
+            c.Description = reader["Description"] == DBNull.Value ? null : reader["Description"].ToString();
+            c.Category = reader["Category"].ToString()!;
+            c.Size = reader["Size"].ToString()!;
+            c.Condition = reader["Condition"].ToString()!;
+            c.Color = reader["Color"].ToString()!;
+
+            c.Price = reader["Price"] == DBNull.Value
+                ? null
+                : Convert.ToDecimal(reader["Price"]);
+
+            c.Status = reader["Status"].ToString()!;
+
+            c.ExpirationDate = reader["ExpirationDate"] == DBNull.Value
+                ? null
+                : Convert.ToDateTime(reader["ExpirationDate"]);
+
+            c.CreatedAt = Convert.ToDateTime(reader["CreatedAt"]);
+
+            c.DestinationStoreId = reader["DestinationStoreId"] == DBNull.Value
+                ? null
+                : Convert.ToInt32(reader["DestinationStoreId"]);
+
+            c.DestinationStoreName = reader["DestinationStoreName"] == DBNull.Value
                 ? null
                 : reader["DestinationStoreName"].ToString();
 
-            item.ImagePath = reader["ImagePath"] == DBNull.Value
-                ? null
-                : reader["ImagePath"].ToString();
-
-            return item;
+            return c;
         }
     }
 }

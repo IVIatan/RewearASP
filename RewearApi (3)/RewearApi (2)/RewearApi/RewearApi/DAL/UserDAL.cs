@@ -41,7 +41,7 @@ namespace RewearApi.DAL
             }
         }
 
-        public User? GetUserById(int id)
+        public User? GetUserById(int userId)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace RewearApi.DAL
                 {
                     var paramDic = new Dictionary<string, object>
                     {
-                        { "@UserId", id }
+                        { "@UserId", userId }
                     };
 
                     SqlCommand cmd = CreateCommand(SP_GET_BY_ID, con, paramDic);
@@ -81,7 +81,7 @@ namespace RewearApi.DAL
                     {
                         { "@FullName",     user.FullName },
                         { "@Email",        user.Email },
-                        { "@PasswordHash", user.Password },
+                        { "@PasswordHash", user.PasswordHash },
                         { "@Phone",        (object?)user.Phone ?? DBNull.Value },
                         { "@City",         user.City },
                         { "@UserType",     user.UserType }
@@ -91,7 +91,6 @@ namespace RewearApi.DAL
 
                     object result = cmd.ExecuteScalar();
                     int newId = Convert.ToInt32(result);
-
                     return newId;
                 }
             }
@@ -121,7 +120,6 @@ namespace RewearApi.DAL
 
                     object result = cmd.ExecuteScalar();
                     int rows = Convert.ToInt32(result);
-
                     return rows;
                 }
             }
@@ -138,19 +136,11 @@ namespace RewearApi.DAL
             u.UserId = Convert.ToInt32(reader["UserId"]);
             u.FullName = reader["FullName"].ToString()!;
             u.Email = reader["Email"].ToString()!;
-
-            u.Phone = reader["Phone"] == DBNull.Value
-                ? null
-                : reader["Phone"].ToString();
-
+            u.Phone = reader["Phone"] == DBNull.Value ? null : reader["Phone"].ToString();
             u.City = reader["City"].ToString()!;
             u.UserType = reader["UserType"].ToString()!;
+            u.CreatedAt = Convert.ToDateTime(reader["CreatedAt"]);
             u.IsActive = Convert.ToBoolean(reader["IsActive"]);
-
-            if (reader["CreatedAt"] != DBNull.Value)
-            {
-                u.CreatedAt = Convert.ToDateTime(reader["CreatedAt"]);
-            }
 
             return u;
         }
