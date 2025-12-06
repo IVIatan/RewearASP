@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>בדיקת פריטים שהועלו לאתר</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page">
+        <header class="page-header">
+            <h1>בדיקת פריטים שהועלו לאתר</h1>
+            <p>כאן ניתן לראות ולבדוק מידע שמגיע מה־API של Rewear: פריטים, משתמשים, חנויות והזמנות.</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" data-target="section-items">פריטי לבוש</button>
+            <button class="tab-button" data-target="section-users">משתמשים</button>
+            <button class="tab-button" data-target="section-stores">חנויות</button>
+            <button class="tab-button" data-target="section-orders">הזמנות</button>
+        </nav>
+
+        <main>
+            <section id="section-items" class="section active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>רשימת פריטי לבוש</h2>
+                        <button id="reloadItemsBtn" class="btn btn-secondary">רען רשימת פריטים</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>קוד</th>
+                                    <th>בעלים</th>
+                                    <th>שם בעלים</th>
+                                    <th>חנות מקור</th>
+                                    <th>חנות יעד</th>
+                                    <th>שם חנות יעד</th>
+                                    <th>כותרת</th>
+                                    <th>קטגוריה</th>
+                                    <th>מידה</th>
+                                    <th>מצב</th>
+                                    <th>צבע</th>
+                                    <th>מחיר</th>
+                                    <th>סטטוס</th>
+                                    <th>תאריך פקיעה</th>
+                                    <th>תמונה</th>
+                                    <th>פעולות</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>הוספת פריט חדש לבדיקה</h2>
+                    <p class="card-subtitle">
+                        הטופס הזה שולח נתונים אל ה־API של Rewear ומוסיף פריט טסט חדש למסד הנתונים.
+                    </p>
+
+                    <form id="addItemForm" class="form-grid" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <label for="ownerUserId">קוד בעלים (UserId)</label>
+                            <input type="number" id="ownerUserId" name="ownerUserId" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="storeId">קוד חנות מקור (אופציונלי)</label>
+                            <input type="number" id="storeId" name="storeId" placeholder="אם אין – השאר ריק">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="destinationStoreId">קוד חנות יעד (אופציונלי)</label>
+                            <input type="number" id="destinationStoreId" name="destinationStoreId" placeholder="אם אין – השאר ריק">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="title">כותרת הפריט</label>
+                            <input type="text" id="title" name="title" required>
+                        </div>
+
+                        <div class="form-row full-row">
+                            <label for="description">תיאור הפריט (אופציונלי)</label>
+                            <textarea id="description" name="description" rows="2" placeholder="ג׳ינס כחול, מכנסיים, שמלה..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="category">קטגוריה</label>
+                            <input type="text" id="category" name="category" placeholder="חולצה, מכנסיים, שמלה..." required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="size">מידה</label>
+                            <input type="text" id="size" name="size" placeholder="S / M / L / 38 / 42" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="condition">מצב</label>
+                            <input type="text" id="condition" name="condition" placeholder="חדש, כמו חדש, משומש..." required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="color">צבע</label>
+                            <input type="text" id="color" name="color" placeholder="כחול, שחור, לבן..." required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="price">מחיר (אופציונלי)</label>
+                            <input type="number" id="price" name="price" step="0.01" min="0">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="status">סטטוס</label>
+                            <select id="status" name="status">
+                                <option value="Available" selected>Available</option>
+                                <option value="Reserved">Reserved</option>
+                                <option value="Sold">Sold</option>
+                                <option value="Donated">Donated</option>
+                                <option value="Recycled">Recycled</option>
+                                <option value="Expired">Expired</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="expirationDate">תאריך פקיעה (אופציונלי)</label>
+                            <input type="date" id="expirationDate" name="expirationDate">
+                        </div>
+
+                        <div class="form-row full-row">
+                            <label for="itemImage">תמונה לפריט (אופציונלי)</label>
+                            <input type="file" id="itemImage" name="itemImage" accept="image/*">
+                        </div>
+
+                        <div class="form-actions full-row">
+                            <button type="submit" class="btn btn-primary">הוסף פריט</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="section-users" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>משתמשים</h2>
+                        <button id="reloadUsersBtn" class="btn btn-secondary">רען משתמשים</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>קוד</th>
+                                    <th>שם מלא</th>
+                                    <th>אימייל</th>
+                                    <th>טלפון</th>
+                                    <th>עיר</th>
+                                    <th>סוג משתמש</th>
+                                    <th>נוצר בתאריך</th>
+                                    <th>סטטוס</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-stores" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>חנויות</h2>
+                        <button id="reloadStoresBtn" class="btn btn-secondary">רען חנויות</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>קוד חנות</th>
+                                    <th>בעלים</th>
+                                    <th>שם חנות</th>
+                                    <th>ייעוד</th>
+                                    <th>עיר</th>
+                                    <th>נוצר בתאריך</th>
+                                    <th>סטטוס</th>
+                                </tr>
+                            </thead>
+                            <tbody id="storesTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-orders" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>הזמנות</h2>
+                        <button id="reloadOrdersBtn" class="btn btn-secondary">רען הזמנות</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>קוד הזמנה</th>
+                                    <th>קוד פריט</th>
+                                    <th>שם פריט</th>
+                                    <th>קונה</th>
+                                    <th>שם קונה</th>
+                                    <th>מוכר</th>
+                                    <th>שם מוכר</th>
+                                    <th>תאריך הזמנה</th>
+                                    <th>סכום</th>
+                                    <th>סטטוס</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="scripts/index.js"></script>
+</body>
+</html>

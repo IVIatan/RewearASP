@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background-color: #f4fbf9;
+    color: #143642;
+    direction: rtl;
+    text-align: right;
+}
+
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.page-header p {
+    margin: 0;
+    font-size: 15px;
+    color: #4f7483;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background-color: #e3f3ed;
+    color: #143642;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.tab-button.active {
+    background-color: #0fa47a;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.tab-button:hover {
+    background-color: #cfe8df;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.card-subtitle {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: #4f7483;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+thead {
+    background-color: #e9f5f0;
+}
+
+th,
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e1ece7;
+    white-space: nowrap;
+}
+
+th {
+    font-weight: 600;
+    text-align: right;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f7fbf9;
+}
+
+tbody tr:hover {
+    background-color: #edf6f2;
+}
+
+.item-image {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+}
+
+.btn {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.1s, box-shadow 0.1s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-primary {
+    background-color: #0fa47a;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0c8260;
+    box-shadow: 0 0 0 2px rgba(15, 164, 122, 0.25);
+}
+
+.btn-secondary {
+    background-color: #143642;
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: #102a32;
+}
+
+.btn-danger {
+    background-color: #e04848;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #c73838;
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    font-size: 13px;
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 20px;
+    margin-top: 16px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row.full-row {
+    grid-column: 1 / -1;
+}
+
+.form-row label {
+    font-size: 13px;
+    color: #255869;
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #c6dad3;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    background-color: #fdfefe;
+}
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+    border-color: #0fa47a;
+    box-shadow: 0 0 0 2px rgba(15, 164, 122, 0.15);
+}
+
+.form-actions {
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding-inline: 10px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    th,
+    td {
+        font-size: 13px;
+    }
+
+    .page-header h1 {
+        font-size: 22px;
+    }
+}
