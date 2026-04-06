@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RewearApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+891fe0f6ef4f4b14b1f532e6961398c1b4ffa0bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("RewearApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RewearApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

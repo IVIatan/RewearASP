@@ -6,27 +6,34 @@ namespace RewearApi.BL
     public class Store
     {
         public int StoreId { get; set; }
-        public int OwnerUserId { get; set; }
 
         public string StoreName { get; set; } = "";
-        public string Purpose { get; set; } = "";   // Donation / Recycling
-        public string City { get; set; } = "";
+
+        public string Address { get; set; } = "";
+        public string? City { get; set; }
+        public string? Area { get; set; }
+
+        public string Email { get; set; } = "";
+        public string? Phone { get; set; }
+
+        public string? Description { get; set; }
 
         public DateTime CreatedAt { get; set; }
-        public bool IsActive { get; set; } = true;
 
-        public string? OwnerFullName { get; set; }
-
-        public string Validate()
+        public List<string> Validate()
         {
-            var errors = new List<string>();
+            List<string> errors = new List<string>();
 
-            if (OwnerUserId <= 0) errors.Add("OwnerUserId חובה");
-            if (string.IsNullOrWhiteSpace(StoreName)) errors.Add("StoreName חובה");
-            if (string.IsNullOrWhiteSpace(Purpose)) errors.Add("Purpose חובה");
-            if (string.IsNullOrWhiteSpace(City)) errors.Add("City חובה");
+            if (string.IsNullOrWhiteSpace(StoreName))
+                errors.Add("StoreName חובה");
 
-            return string.Join("; ", errors);
+            if (string.IsNullOrWhiteSpace(Address))
+                errors.Add("Address חובה");
+
+            if (string.IsNullOrWhiteSpace(Email))
+                errors.Add("Email חובה");
+
+            return errors;
         }
     }
 }

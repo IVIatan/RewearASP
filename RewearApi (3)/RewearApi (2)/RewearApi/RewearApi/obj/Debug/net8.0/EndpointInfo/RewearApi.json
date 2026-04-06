@@ -12,33 +12,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -90,24 +64,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClothingItem"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClothingItem"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClothingItem"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -150,16 +107,14 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/ClothingItems/owner/{ownerUserId}": {
-      "get": {
+      },
+      "delete": {
         "tags": [
           "ClothingItems"
         ],
         "parameters": [
           {
-            "name": "ownerUserId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -170,45 +125,19 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
     },
-    "/api/ClothingItems/store/{storeId}": {
-      "get": {
+    "/api/ClothingItems/{id}/image": {
+      "post": {
         "tags": [
           "ClothingItems"
         ],
         "parameters": [
           {
-            "name": "storeId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -217,35 +146,29 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
                   }
                 }
               },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ClothingItem"
-                  }
+              "encoding": {
+                "file": {
+                  "style": "form"
                 }
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -710,11 +633,6 @@
             "format": "int32",
             "nullable": true
           },
-          "destinationStoreId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
           "title": {
             "type": "string",
             "nullable": true
@@ -757,6 +675,11 @@
             "type": "string",
             "format": "date-time"
           },
+          "destinationStoreId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "ownerFullName": {
             "type": "string",
             "nullable": true
@@ -766,6 +689,10 @@
             "nullable": true
           },
           "destinationStoreName": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagePath": {
             "type": "string",
             "nullable": true
           }
@@ -825,11 +752,15 @@
             "type": "integer",
             "format": "int32"
           },
+          "ownerUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "storeName": {
             "type": "string",
             "nullable": true
           },
-          "storeType": {
+          "purpose": {
             "type": "string",
             "nullable": true
           },
@@ -837,24 +768,16 @@
             "type": "string",
             "nullable": true
           },
-          "address": {
+          "createdAt": {
             "type": "string",
-            "nullable": true
-          },
-          "phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
           "isActive": {
             "type": "boolean"
           },
-          "createdAt": {
+          "ownerFullName": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -875,6 +798,10 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "passwordHash": {
             "type": "string",
             "nullable": true
           },
